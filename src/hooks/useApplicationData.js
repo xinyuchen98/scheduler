@@ -19,7 +19,7 @@ export default function useApplicationData() {
       [id]: appointment
     };
     return axios.put(`/api/appointments/${id}`, {interview})
-      .then(() => setState(prev => ({ ...prev, appointments })));
+      .then(() => setState(prev => ({ ...prev, appointments, days: updateSpots(appointments) })));
   }
 
   const cancelInterview = function(id) {
@@ -32,10 +32,24 @@ export default function useApplicationData() {
       [id]: appointment
     };
     return axios.delete(`/api/appointments/${id}`)
-      .then(() => setState(prev => ({ ...prev, appointments })));
+      .then(() => setState(prev => ({ ...prev, appointments, days: updateSpots(appointments) })));
   }
 
   const setDay = day => setState(prev => ({ ...prev, day }));
+
+  const updateSpots = function(appointments) {
+    let days = [...state.days];
+    for (let day of days) {
+      let spots = 0;
+      for (const id of day.appointments) {
+        if (appointments[id].interview === null) {
+          spots ++;
+        }
+      }
+      day.spots = spots;
+    }
+    return days;
+  }
 
   useEffect(() => {
     Promise.all([
