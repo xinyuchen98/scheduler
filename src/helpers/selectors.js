@@ -10,3 +10,11 @@ export function getAppointmentsForDay(state, day) {
   }
   return appointments;
 }
+
+export function getInterview(state, interview) {
+  if (interview) {
+    return { ...interview, interviewer: state.interviewers[interview.interviewer]};
+  } else {
+    return null;
+  }
+}
