@@ -7,11 +7,11 @@ function InterviewerList(props) {
   const interviewers = props.interviewers.map((interviewer) => {
     return (
       <InterviewerListItem 
-        key={interviewer.id}
+        key={interviewer.id}  // Add unique keys for interviewers
         name={interviewer.name}
         avatar={interviewer.avatar}
-        selected={interviewer.id === props.value}
-        setInterviewer={() => props.onChange(interviewer.id)}    
+        selected={interviewer.id === props.value} // Check if the interviewer is selected
+        setInterviewer={() => props.onChange(interviewer.id)} // Function to choose an interviewer
       />
     );
   });
@@ -25,6 +25,7 @@ function InterviewerList(props) {
   );
 }
 
+// Check the type of interviewers and make it required
 InterviewerList.propTypes = {
   interviewers: PropTypes.array.isRequired
 };
