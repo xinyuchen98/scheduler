@@ -6,6 +6,7 @@ import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "help
 import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
+  // Custom hook handles states and actions on data
   const {
     state,
     setDay,
@@ -19,10 +20,10 @@ export default function Application(props) {
     appointment => {
       return (
         <Appointment
-          key={appointment.id}
+          key={appointment.id}  // Add unique keys for appointments
           {...appointment}
-          interview={getInterview(state, appointment.interview)}
-          interviewers={interviewers}
+          interview={getInterview(state, appointment.interview)}  // Add the interview information
+          interviewers={interviewers} // Add the list of available interviewers
           bookInterview={bookInterview}
           cancelInterview={cancelInterview}
         />
@@ -39,6 +40,7 @@ export default function Application(props) {
           alt="Interview Scheduler"
         />
         <hr className="sidebar__separator sidebar--centered" />
+        {/* List of days on the sidebar */}
         <nav className="sidebar__menu">
           <DayList
             days={state.days}
@@ -52,6 +54,7 @@ export default function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
+      {/* Schedule of all appointments */}
       <section className="schedule">
         {appointments}
         <Appointment key="last" time="5pm" />
