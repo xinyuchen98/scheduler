@@ -1,14 +1,14 @@
-// storybook tests
+// Storybook tests
 import React, { Fragment } from 'react';
 
-// import libraries for testing
+// Import libraries for testing
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-// import styling sheet
+// Import styling sheet
 import "index.scss";
 
-// import components needed for testing
+// Import components needed for testing
 import Button from "components/Button";
 import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
@@ -23,7 +23,7 @@ import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
 
-// tests for Button component, 5 states: base, confirm, dange, clickable, and disabled
+// Tests for Button component, 5 states: base, confirm, dange, clickable, and disabled
 storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -40,7 +40,7 @@ storiesOf("Button", module)
     </Button>
   ));
 
-// tests for individual items in DayList in the sidebar, 4 states: unselected, selected, full, and clickable
+// Tests for individual items in DayList in the sidebar, 4 states: unselected, selected, full, and clickable
 storiesOf("DayListItem", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -52,7 +52,7 @@ storiesOf("DayListItem", module)
     <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} />
   ));
 
-// hardcoded days data for testing
+// Mock days data for testing
 const days = [
   {
     id: 1,
@@ -71,7 +71,7 @@ const days = [
   },
 ];
 
-// tests for DayList components, select on three different days
+// Tests for DayList components, select on three different days
 storiesOf("DayList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
@@ -86,14 +86,14 @@ storiesOf("DayList", module)
     <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
   ));
 
-// hardcoded interviewer data for testing
+// Mock interviewer data for testing
 const interviewer = {
   id: 1,
   name: "Sylvia Palmer",
   avatar: "https://i.imgur.com/LpaY82x.png"
 };
 
-// tests for individual items in InterviewerList in adding and editing appointment components, 3 states: unselected, selected, and clickable
+// Tests for individual items in InterviewerList in adding and editing appointment components, 3 states: unselected, selected, and clickable
 storiesOf("InterviewerListItem", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -121,7 +121,7 @@ storiesOf("InterviewerListItem", module)
     />
   ));
 
-// hardcoded interviewers data for testing
+// Mock interviewers data for testing
 const interviewers = [
   { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
   { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
@@ -130,7 +130,7 @@ const interviewers = [
   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
 ];
 
-// tests for InterviewerList components, 3 states: unselected, selected, and clickable
+// Tests for InterviewerList components, 3 states: unselected, selected, and clickable
 storiesOf("InterviewerList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -153,39 +153,39 @@ storiesOf("InterviewerList", module)
     />
   ));
 
-// tests for Appointment components, 12 states
+// Tests for Appointment components, 12 states
 storiesOf("Appointment", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }]
   })
-  // base state
+  // Base state
   .add("Appointment", () => <Appointment />)
-  // with time header (passed from Appointment component)
+  // With time header (passed from Appointment component)
   .add("Appointment with Time", () => <Appointment time="12pm" />)
-  // with time header (passed from Header of parent Appointment)
+  // With time header (passed from Header of parent Appointment)
   .add("Header", () => <Header time="12pm" />)
-  // when the time slot is empty
+  // When the time slot is empty
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
-  // when the time slot is booked
+  // When the time slot is booked
   .add("Show", () => <Show student="Lydia Miller-Jones" interviewer={interviewer} onEdit={action("onEdit")} onDelete={action("onDelete")}/>)
-  // confirmation box on deleting an existing appointment
+  // Confirmation box on deleting an existing appointment
   .add("Confirm", () => <Confirm message="Delete the appointment?" onConfirm={action("onConfirm")} onCancel={action("onCancel")} />)
-  // transition box for deleting
+  // Transition box for deleting
   .add("Status", () => <Status message="Deleting" />)
-  // error message box for unsuccessful delete
+  // Error message box for unsuccessful delete
   .add("Error", () => <Error message="Could not delete appointment." onClose={action("onClose")}/>)
-  // edit box for an existing appointment
+  // Edit box for an existing appointment
   .add("Edit", () => <Form student="Xinyu Chen" interviewer={2} interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")}/>)
-  // create a new appointment
+  // Create a new appointment
   .add("Create", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} />)
-  // an empty Appintment component with header and footer
+  // An empty Appintment component with header and footer
   .add("Appointment Empty", () => (
     <Fragment>
       <Appointment id={1} time="4pm" />
       <Appointment time="5pm" />
     </Fragment>
   ))
-  // a booked Appointment component with header and footer
+  // A booked Appointment component with header and footer
   .add("Appointment Booked", () => (
     <Fragment>
       <Appointment
