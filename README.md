@@ -17,6 +17,10 @@ Interview Scheduler is a web application that helps users to schedule interviews
 - Add an Appointment<br />
 ![Add an appointment](https://github.com/xinyuchen98/scheduler/raw/master/docs/appointment-add.png)
 
+- Delete an Appointment<br />
+![Confirmation box](https://github.com/xinyuchen98/scheduler/raw/master/docs/appointment-confirmation.png)
+![Deleting box](https://github.com/xinyuchen98/scheduler/raw/master/docs/appointment-deleting.png)
+
 ## Running Webpack Development Server
 
 ```sh
