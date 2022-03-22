@@ -9,6 +9,14 @@ Interview Scheduler is a web application that helps users to schedule interviews
 4. Start the web server using the `npm start` command. Interview Scheduler will be served at <http://localhost:8000/>.
 5. Go to <http://localhost:8000/> in your browser.
 
+## Screenshots
+
+- Layout<br />
+![Layout](https://github.com/xinyuchen98/scheduler/raw/master/docs/layout.png)
+
+- Add an Appointment<br />
+![Add an appointment](https://github.com/xinyuchen98/scheduler/raw/master/docs/appointment-add.png)
+
 ## Running Webpack Development Server
 
 ```sh
@@ -26,3 +34,9 @@ npm test
 ```sh
 npm run storybook
 ```
+## Dependencies
+
+- ReactJS
+- Axios
+- Classnames
+- PropTypes
