@@ -1,5 +1,6 @@
 import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "helpers/selectors";
 
+// Mock state with days, appointments, and interviewers
 const state = {
   days: [
     {
